@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "The operation data holds the log file."
   spec.description   = "User operation data saves log files and records user information."
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/OrderSun/model_log"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
