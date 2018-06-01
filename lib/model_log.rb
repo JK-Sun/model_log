@@ -10,7 +10,7 @@ module ModelLog
 
     def info(content)
       content = content.chomp + "\n"
-      File.open("log/model_log_#{Rails.env}.log", "a+") do |output|
+      File.open("#{Rails.root.to_s}/log/model_log_#{Rails.env}.log", "a+") do |output|
         output.write(content)
       end
     end
