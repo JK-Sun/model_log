@@ -28,7 +28,7 @@ module ModelLog
         end
 
         def data_processing(field_name, field_data, **options)
-          if field_data.is_a? CarrierWave::Uploader::Base
+          if defined? CarrierWave::Uploader::Base and field_data.is_a? CarrierWave::Uploader::Base
             return options[:index] == 0 ? get_uploader_filename(field_data.url) : send("#{field_name}_identifier")
           elsif field_data.is_a? BigDecimal
             return field_data.to_f
