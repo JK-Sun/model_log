@@ -10,13 +10,13 @@ module ModelLog
 
     def info(content)
       content = content.chomp + "\n"
-      File.open("#{Rails.root.to_s}/log/model_log_#{Rails.env}.log", "a+") do |output|
+      File.open("#{Rails.root}/log/model_log_#{Rails.env}.log", "a+") do |output|
         output.write(content)
       end
     end
   end
 
-  @current_user_method = @current_user_method || :current_passport
-  @user_name_field = @user_name_field || :username
+  @current_user_method ||= :current_passport
+  @user_name_field ||= :username
 end
 
