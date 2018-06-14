@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    model_log (1.0.0)
+    model_log (1.0.2)
 
 GEM
   remote: https://rubygems.org/
