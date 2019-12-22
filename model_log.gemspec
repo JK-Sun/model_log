@@ -1,4 +1,3 @@
-
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "model_log/version"
@@ -6,12 +5,12 @@ require "model_log/version"
 Gem::Specification.new do |spec|
   spec.name          = "model_log"
   spec.version       = ModelLog::VERSION
-  spec.authors       = ["sunyudong"]
-  spec.email         = ["462436208@qq.com"]
+  spec.authors       = ["jk-sun"]
+  spec.email         = ["jk-sun@qq.com"]
 
-  spec.summary       = "The operation data holds the log file."
-  spec.description   = "User operation data saves log files and records user information."
-  spec.homepage      = "https://github.com/OrderSun/model_log"
+  spec.summary       = "Record all changes to the models into a log file for Rails"
+  spec.description   = "It's designed to be used to record all changes to the models into a log file. You can also use it to record who made the changes"
+  spec.homepage      = "https://github.com/JK-Sun/model_log"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -24,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.16"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
+  #spec.add_development_dependency "bundler", "~> 1.16"
+  #spec.add_development_dependency "rake", "~> 10.0"
+  #spec.add_development_dependency "rspec", "~> 3.0"
 end
