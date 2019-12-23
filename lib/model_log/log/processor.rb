@@ -10,10 +10,8 @@ module ModelLog
         when :update
           updated_data
         else
-          default_data
+          raise StandardError, "invalid action given #{@action}"
         end
-      rescue
-        default_data
       end
 
       private
@@ -23,7 +21,6 @@ module ModelLog
       end
 
       def created_data
-        # TODO process data
         # key => value
         @resource.class.content_columns.map do |column|
           [column.name, @resource.send(column.name)]
@@ -33,7 +30,6 @@ module ModelLog
       alias_method :destroyed_data, :created_data
 
       def updated_data
-        # TODO process data
         # key => [before, after]
         default_data
       end
