@@ -32,7 +32,7 @@ The log in development environment is in `model_log_development.log`.
 
 The log in production environment is in `model_log_production.log`.
 
-## Current User Tracking
+## Configure
 
 By default, ModelLog uses the `current_user` method in your controller. The default identity field is `id`.
 
@@ -40,6 +40,9 @@ To use a method other than `current_user` and an identity field other than `id`,
 
 ```ruby
 # config/initializers/model_log.rb
-ModelLog.current_user_fn = :current_manager
-ModelLog.identity_field = :username
+ModelLog.configure do |config|
+  config.current_user_fn = :current_manager     # default: :current_user
+  config.identity_field  = :username            # default: :id
+  config.separator       = ' '                  # default: "\t"
+end
 ```
