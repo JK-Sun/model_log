@@ -4,8 +4,8 @@ module ModelLog
 
     def initialize
       @current_user_fn ||= :current_user
-      @identity_field ||= :id
-      @separator ||= "\t"
+      @identity_field  ||= :id
+      @separator       ||= "\t"
     end
   end
 end
