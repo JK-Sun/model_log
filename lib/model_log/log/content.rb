@@ -4,14 +4,21 @@ module ModelLog
       def content
         return if is_update? && @resource.changes.empty?
         content = []
+        content += thread_content
         content += requester_content if ModelLog.requester_exist?
         content += user_content if ModelLog.current_user_exist?
         content += action_content
         content += resource_content
-        content.join("\t")
+        content.join(ModelLog.config.separator)
       end
 
       private
+
+      def thread_content
+        [
+          Thread.current.object_id
+        ]
+      end
 
       def requester_content
         [
@@ -25,7 +32,7 @@ module ModelLog
 
       def user_content
         [
-          ModelLog.current_user.send(ModelLog.identity_field)
+          ModelLog.current_user.send(ModelLog.config.identity_field)
         ]
       end
 

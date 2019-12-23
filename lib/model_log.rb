@@ -1,4 +1,5 @@
 require "model_log/version"
+require "model_log/config"
 require "model_log/store"
 require "model_log/controller"
 require "model_log/modeller"
@@ -9,10 +10,16 @@ require "model_log/log/processor"
 
 module ModelLog
   class << self
-    attr_accessor :current_user_fn, :identity_field
+    def configure
+      yield config
+    end
+
+    def config
+      @_config ||= Config.new
+    end
 
     def logger
-      @logger ||= Logger.new("model_log_#{Rails.env}.log")
+      @_logger ||= Logger.new("model_log_#{Rails.env}.log")
     end
 
     def requester
@@ -31,8 +38,5 @@ module ModelLog
       !!current_user
     end
   end
-
-  @current_user_fn ||= :current_user
-  @identity_field ||= :id
 end
 
