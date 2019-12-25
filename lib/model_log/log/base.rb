@@ -1,6 +1,6 @@
 module ModelLog
   module Log
-    class Base
+    module Base
       # {
       #   resource:     obj_active_record,
       #   action:       create|update|destroy,
@@ -10,7 +10,7 @@ module ModelLog
         @action = action
       end
 
-      protected
+      private
 
       def is_update?
         @action == :update

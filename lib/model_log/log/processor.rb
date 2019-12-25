@@ -1,6 +1,8 @@
 module ModelLog
   module Log
-    class Processor < Base
+    class Processor
+      include Base
+
       def data
         case @action
         when :create
