@@ -18,7 +18,7 @@ module ModelLog
 
     def set_current_user
       Store.clear_current_user!
-      Store.current_user = send(ModelLog.config.current_user_fn) rescue nil
+      Store.current_user = send(ModelLog.config.current_user_method) rescue nil
     end
 
     def set_current_requester
