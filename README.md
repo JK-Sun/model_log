@@ -41,8 +41,8 @@ To use a method other than `current_user` and an identity field other than `id`,
 ```ruby
 # config/initializers/model_log.rb
 ModelLog.configure do |config|
-  config.current_user_fn = :current_manager     # default: :current_user
-  config.identity_field  = :username            # default: :id
-  config.separator       = ' '                  # default: "\t"
+  config.current_user_method = :current_manager     # default: :current_user
+  config.identity_field      = :username            # default: :id
+  config.separator           = ' '                  # default: "\t"
 end
 ```
