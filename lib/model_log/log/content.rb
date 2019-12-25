@@ -1,6 +1,8 @@
 module ModelLog
   module Log
-    class Content < Base
+    class Content
+      include Base
+
       def content
         return if is_update? && @resource.changes.empty?
         content = []
