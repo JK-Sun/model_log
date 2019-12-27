@@ -1,55 +1,27 @@
 module ModelLog
   module Log
     class Content
-      include Base
+      include Initializer
+
+      def initialize(resource, action, formatter)
+        super(resource, action)
+        @formatter = formatter
+      end
 
       def content
-        return if is_update? && @resource.changes.empty?
-        content = []
-        content += thread_content
-        content += requester_content if ModelLog.requester_exist?
-        content += user_content if ModelLog.current_user_exist?
-        content += action_content
-        content += resource_content
-        content.join(ModelLog.config.separator)
+        @formatter.new(context).call
       end
 
       private
 
-      def thread_content
-        [
-          Thread.current.object_id
-        ]
-      end
-
-      def requester_content
-        [
-          ModelLog.requester.request_method,
-          ModelLog.requester.url,
-          ModelLog.requester.referer,
-          ModelLog.requester.remote_ip,
-          ModelLog.requester.user_agent
-        ]
-      end
-
-      def user_content
-        [
-          ModelLog.current_user.send(ModelLog.config.identity_field)
-        ]
-      end
-
-      def action_content
-        [
-          @action.upcase
-        ]
-      end
-
-      def resource_content
-        [
-          @resource.class.name,
-          @resource.id,
-          Processor.new(@resource, @action).data
-        ]
+      def context
+        Context.new(
+          current_user: ModelLog.current_user,
+          requester: ModelLog.requester,
+          action: @action,
+          resource: @resource,
+          changes: Processor.new(@resource, @action).data
+        ).to_struct
       end
     end
   end
