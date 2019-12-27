@@ -38,7 +38,7 @@ module ModelLog
     end
 
     def log_content(resource, action)
-      @log_content ||= Log::Content.new(resource, action).content
+      @log_content ||= Log::Content.new(resource, action, ModelLog.config.formatter).content
     end
   end
 end

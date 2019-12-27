@@ -1,7 +1,7 @@
 module ModelLog
   module Log
     class Processor
-      include Base
+      include Initializer
 
       def data
         case @action
@@ -11,8 +11,6 @@ module ModelLog
           destroyed_data
         when :update
           updated_data
-        else
-          raise StandardError, "invalid action given #{@action}"
         end
       end
 
