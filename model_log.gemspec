@@ -8,15 +8,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["jk-sun"]
   spec.email         = ["jk-sun@qq.com"]
 
-<<<<<<< HEAD
-  spec.summary       = "The operation data holds the log file."
-  spec.description   = "User operation data saves log files and records user information."
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
-=======
   spec.summary       = "Record all changes to the models into a log file for Rails"
   spec.description   = "It's designed to be used to record all changes to the models into a log file. You can also use it to record who made the changes"
   spec.homepage      = "https://github.com/JK-Sun/model_log"
->>>>>>> 6e8a937... feat: update gemspec
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
