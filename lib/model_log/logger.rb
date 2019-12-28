@@ -3,7 +3,7 @@ require "logger"
 module ModelLog
   class Logger < ::Logger
     def initialize(filename)
-      super(File.join(Rails.root, 'log', filename))
+      super(File.join(::Rails.root, 'log', filename))
       self.level = level
       self.datetime_format = datetime_format
       self

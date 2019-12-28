@@ -22,7 +22,7 @@ module ModelLog
     end
 
     def logger
-      @_logger ||= Logger.new("model_log_#{Rails.env}.log")
+      @_logger ||= Logger.new("model_log_#{::Rails.env}.log")
     end
 
     def requester

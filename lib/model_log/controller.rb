@@ -9,8 +9,13 @@ module ModelLog
 
     module ClassMethods
       def set_model_log_stroe
-        before_action :set_current_user
-        before_action :set_current_requester
+        if ::Rails::VERSION::MAJOR > 3
+          before_action :set_current_user
+          before_action :set_current_requester
+        else
+          before_filter :set_current_user
+          before_filter :set_current_requester
+        end
       end
     end
 

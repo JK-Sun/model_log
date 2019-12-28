@@ -8,7 +8,7 @@ module ModelLog
       @identity_field      ||= :id
       @separator           ||= "\t"
       @formatter           ||= Default::Formatter
-      @logger_level        ||= :info  # :debug < :info < :warn < :error < :fatal < :unknown
+      @logger_level        ||= Logger::INFO  # DEBUG < INFO < WARN < ERROR < FATAL < UNKNOWN
     end
   end
 end

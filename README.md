@@ -2,6 +2,11 @@
 
 It's designed to be used to record all changes of the models to a log file for Rails. You can also use it to record who made the changes.
 
+## Supported Versions
+
+- Ruby 2.0.0+
+- Rails 3.0.0+
+
 ## Installation
 
 Add this line to your application's Gemfile:
