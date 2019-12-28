@@ -109,3 +109,6 @@ ModelLog.configure do |config|
 end
 ```
 
+## Copyright
+
+Copyright (c) 2018- jk-sun. See LICENSE.tet for further details.
