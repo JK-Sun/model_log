@@ -10,6 +10,9 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Record all changes to the models into a log file for Rails"
   spec.description   = "It's designed to be used to record all changes to the models into a log file. You can also use it to record who made the changes"
+
+  spec.required_ruby_version     = ">= 2.0.0"
+
   spec.homepage      = "https://github.com/JK-Sun/model_log"
   spec.license       = "MIT"
 
@@ -23,6 +26,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_development_dependency "bundler", ">= 0"
   #spec.add_development_dependency "bundler", "~> 1.16"
   #spec.add_development_dependency "rake", "~> 10.0"
   #spec.add_development_dependency "rspec", "~> 3.0"
