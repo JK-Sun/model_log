@@ -23,7 +23,7 @@ module ModelLog
     end
 
     def model_log_destroy
-      model_log_write(self, :delete)
+      model_log_write(self, :destroy)
     end
 
     def model_log_write(resource, action)

@@ -14,7 +14,7 @@ module ModelLog
       private
 
       def verify_action!
-        unless %i(create destory update).include? @action
+        unless %i(create destroy update).include? @action
           raise StandardError, "invalid action given #{@action}"
         end
       end

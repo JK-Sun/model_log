@@ -7,10 +7,10 @@ module ModelLog
         case @action
         when :create
           created_data
-        when :destory
-          destroyed_data
         when :update
           updated_data
+        when :destroy
+          destroyed_data
         end
       end
 
