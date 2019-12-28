@@ -6,7 +6,6 @@
 /pkg/
 /spec/reports/
 /tmp/
-/Rakefile
 /spec/
 /.rspec
 /Gemfile.lock
