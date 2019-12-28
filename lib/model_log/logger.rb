@@ -1,18 +1,22 @@
-require "active_support"
+require "logger"
 
 module ModelLog
-  class Logger < ::ActiveSupport::Logger
-    def initialize(log_name = 'model_log', path = "")
-      log_path = File.join(Rails.root, 'log', path.to_s, "#{log_name}")
-      super(log_path)
+  class Logger < ::Logger
+    def initialize(filename)
+      super(File.join(Rails.root, 'log', filename))
+      self.level = level
+      self.datetime_format = datetime_format
+      self
     end
 
-    LEVELS = %i(debug info warn error fatal unknown).freeze
+    private
 
-    LEVELS.each do |level|
-      define_method level do |msg|
-        super("[#{Time.current.strftime('%Y-%m-%d %H:%M:%S')}] #{level.upcase} -- : #{msg}")
-      end
+    def level
+      ModelLog.config.logger_level
+    end
+
+    def datetime_format
+      ModelLog.config.logger_datetime_format
     end
   end
 end
