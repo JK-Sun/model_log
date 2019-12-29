@@ -1,37 +1,41 @@
 RSpec.describe ModelLog::Store do
+  let(:current_user) { 'my user' }
+  let(:current_requester) { 'my requester' }
+  subject { ModelLog::Store }
+
   it 'test store write current_user' do
-    ModelLog::Store.current_user = 'my user'
-    expect(ModelLog::Store.store).to eq({
-      current_user: 'my user'
+    subject.current_user = current_user
+    expect(subject.store).to eq({
+      current_user: current_user
     })
   end
 
   it 'test store write requester' do
-    ModelLog::Store.current_requester = 'my requester'
-    expect(ModelLog::Store.store).to eq({
-      current_user: 'my user',
-      requester: 'my requester'
+    subject.current_requester = current_requester
+    expect(subject.store).to eq({
+      current_user: current_user,
+      requester: current_requester
     })
   end
 
   it 'test store read current_user' do
-    expect(ModelLog::Store.current_user).to eq 'my user'
+    expect(subject.current_user).to eq current_user
   end
 
   it 'test store read requester' do
-    expect(ModelLog::Store.current_requester).to eq 'my requester'
+    expect(subject.current_requester).to eq current_requester
   end
 
   it 'test store delete current_user' do
-    ModelLog::Store.clear_current_user!
-    expect(ModelLog::Store.store).to eq ({
-      requester: 'my requester'
+    subject.clear_current_user!
+    expect(subject.store).to eq ({
+      requester: current_requester
     })
   end
 
   it 'test store delete requester' do
-    ModelLog::Store.clear_current_requester!
-    expect(ModelLog::Store.store).to eq ({})
+    subject.clear_current_requester!
+    expect(subject.store).to eq ({})
   end
 end
 
