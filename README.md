@@ -111,4 +111,4 @@ end
 
 ## Copyright
 
-Copyright (c) 2018- jk-sun. See LICENSE.tet for further details.
+Copyright (c) 2018- jk-sun. See LICENSE.txt for further details.
