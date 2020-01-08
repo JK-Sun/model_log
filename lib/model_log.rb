@@ -26,7 +26,7 @@ module ModelLog
     end
 
     def requester
-      Store.current_requester
+      Store.requester
     end
 
     def requester_exist?

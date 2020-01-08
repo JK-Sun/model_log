@@ -1,6 +1,7 @@
 module ModelLog
   module Log
     module Initializer
+      attr_accessor :resource, :action
       # {
       #   resource:     object_active_record,
       #   action:       create|update|destroy,
@@ -14,8 +15,8 @@ module ModelLog
       private
 
       def verify_action!
-        unless %i(create destroy update).include? @action
-          raise StandardError, "invalid action given #{@action}"
+        unless %i(create destroy update).include? action
+          raise StandardError, "invalid action given #{action}"
         end
       end
     end

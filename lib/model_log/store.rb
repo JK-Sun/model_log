@@ -33,15 +33,15 @@ module ModelLog
         delete :current_user
       end
 
-      def current_requester
+      def requester
         read :requester
       end
 
-      def current_requester=(obj_request)
-        write :requester, obj_request
+      def requester=(request)
+        write :requester, request
       end
 
-      def clear_current_requester!
+      def clear_requester!
         delete :requester
       end
     end

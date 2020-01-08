@@ -1,6 +1,6 @@
 RSpec.describe ModelLog::Store do
   let(:current_user) { 'my user' }
-  let(:current_requester) { 'my requester' }
+  let(:requester) { 'my requester' }
   subject { ModelLog::Store }
 
   it 'test store write current_user' do
@@ -11,10 +11,10 @@ RSpec.describe ModelLog::Store do
   end
 
   it 'test store write requester' do
-    subject.current_requester = current_requester
+    subject.requester = requester
     expect(subject.store).to eq({
       current_user: current_user,
-      requester: current_requester
+      requester: requester
     })
   end
 
@@ -23,19 +23,18 @@ RSpec.describe ModelLog::Store do
   end
 
   it 'test store read requester' do
-    expect(subject.current_requester).to eq current_requester
+    expect(subject.requester).to eq requester
   end
 
   it 'test store delete current_user' do
     subject.clear_current_user!
     expect(subject.store).to eq ({
-      requester: current_requester
+      requester: requester
     })
   end
 
   it 'test store delete requester' do
-    subject.clear_current_requester!
+    subject.clear_requester!
     expect(subject.store).to eq ({})
   end
 end
-
