@@ -53,6 +53,10 @@ module ModelLog
     def current_user_exist?
       !!current_user
     end
+
+    def version
+      VERSION::STRING
+    end
   end
 end
 

@@ -4,7 +4,7 @@ require "model_log/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "model_log"
-  spec.version       = ModelLog::VERSION
+  spec.version       = ModelLog::VERSION::STRING
   spec.authors       = ["jk-sun"]
   spec.email         = ["jk-sun@qq.com"]
 
