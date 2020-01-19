@@ -9,6 +9,12 @@ module ModelLog
       self
     end
 
+    %i(debug info warn error fatal unknown).each do |method|
+      define_method method do |msg|
+        super(msg) if msg.present?
+      end
+    end
+
     private
 
     def level

@@ -6,9 +6,9 @@ module ModelLog
 
     module ClassMethods
       def model_log
-        after_create :model_log_create
-        after_destroy :model_log_destroy
+        before_create :model_log_create
         before_update :model_log_update
+        after_destroy :model_log_destroy
       end
     end
 
@@ -27,18 +27,9 @@ module ModelLog
     end
 
     def model_log_write(resource, action)
-      # ModelLog.logger.debug resource.changes
-      # update changes is not empty
-      # create and destroy changes is empty
-      if log_content(resource, action)
-        ModelLog.logger.info log_content(resource, action)
-      end
+      ModelLog.logger.info Log::Content.new(resource, action, ModelLog.config.formatter).content
     rescue => ex
       ModelLog.logger.error "#{ex.class}: #{ex.message}"
-    end
-
-    def log_content(resource, action)
-      @log_content ||= Log::Content.new(resource, action, ModelLog.config.formatter).content
     end
   end
 end
