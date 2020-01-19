@@ -48,7 +48,7 @@ To use a method other than `current_user` and an identity field other than `id`,
 ModelLog.configure do |config|
   config.current_user_method    = :current_manager     # default: :current_user
   config.identity_field         = :username            # default: :id
-  config.separator              = "\t"                  # default: ' '
+  config.separator              = "\t"                 # default: ' '
   config.logger_datetime_format = '%Y-%m-%d %H:%M:%S'
 end
 ```
