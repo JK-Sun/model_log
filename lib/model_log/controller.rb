@@ -10,25 +10,25 @@ module ModelLog
     module ClassMethods
       def set_model_log_stroe
         if ::Rails::VERSION::MAJOR > 3
-          before_action :set_current_user
-          before_action :set_current_requester
+          before_action :set_model_log_current_user
+          before_action :set_model_log_requester
         else
-          before_filter :set_current_user
-          before_filter :set_current_requester
+          before_filter :set_model_log_current_user
+          before_filter :set_model_log_requester
         end
       end
     end
 
     private
 
-    def set_current_user
+    def set_model_log_current_user
       Store.clear_current_user!
       Store.current_user = send(ModelLog.config.current_user_method) rescue nil
     end
 
-    def set_current_requester
-      Store.clear_current_requester!
-      Store.current_requester = request.is_a?(ActionDispatch::Request) && request rescue nil
+    def set_model_log_requester
+      Store.clear_requester!
+      Store.requester = request.is_a?(ActionDispatch::Request) && request rescue nil
     end
   end
 end

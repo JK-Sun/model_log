@@ -6,7 +6,7 @@ module ModelLog
     def initialize
       @current_user_method ||= :current_user
       @identity_field      ||= :id
-      @separator           ||= "\t"
+      @separator           ||= ' '
       @formatter           ||= Default::Formatter
       @logger_level        ||= Logger::INFO  # DEBUG < INFO < WARN < ERROR < FATAL < UNKNOWN
     end

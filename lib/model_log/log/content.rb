@@ -18,9 +18,9 @@ module ModelLog
         Context.new(
           current_user: ModelLog.current_user,
           requester: ModelLog.requester,
-          action: @action,
-          resource: @resource,
-          changes: Processor.new(@resource, @action).data
+          action: action,
+          resource: resource,
+          changes: Processor.new(resource, action).data
         ).to_struct
       end
     end
