@@ -4,7 +4,7 @@ module ModelLog
       include Initializer
 
       def data
-        case @action
+        case action
         when :create
           created_data
         when :update
@@ -16,22 +16,17 @@ module ModelLog
 
       private
 
-      def default_data
-        @resource.changes
+      def saved_data
+        changes
       end
 
-      def created_data
-        # key => value
-        @resource.class.content_columns.map do |column|
-          [column.name, @resource.send(column.name)]
-        end.to_h
-      end
+      alias_method :created_data, :saved_data
+      alias_method :updated_data, :saved_data
 
-      alias_method :destroyed_data, :created_data
-
-      def updated_data
-        # key => [before, after]
-        default_data
+      def destroyed_data
+        data = attributes
+        data = data.merge(changed_attributes) if changd?
+        data.map { |attr, value| [attr, [value, nil]] }.to_h
       end
     end
   end
